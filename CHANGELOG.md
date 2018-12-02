@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/sairion/svg-inline-loader/compare/v0.8.0...v0.8.1) (2018-12-02)
+* update packages to latest versions
+* fix `loaderUtils.parseQuery()` deprecation warning (`loader-utils`)
 
 
 
