@@ -10,7 +10,7 @@ chai.use(spies);
 var createSpy = chai.spy;
 var _ = require('lodash');
 
-var svgWithRect = require('raw!./fixtures/xml-rect.svg');
+var svgWithRect = require('raw-loader!./fixtures/xml-rect.svg');
 
 
 describe('getExtractedSVG()', function(){
@@ -32,7 +32,7 @@ describe('getExtractedSVG()', function(){
     });
 
     it('should remove `<defs />` and its children if `removeTags` option is on', function () {
-        var svgWithStyle = require('raw!./fixtures/style-inserted.svg');
+        var svgWithStyle = require('raw-loader!./fixtures/style-inserted.svg');
         var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle, { removeTags: true });
         var reTokenizedStyleInsertedSVG = tokenize(processedStyleInsertedSVG);
 
@@ -43,7 +43,7 @@ describe('getExtractedSVG()', function(){
     });
 
     it('should apply prefixes to class names', function () {
-        var svgWithStyle = require('raw!./fixtures/style-inserted.svg');
+        var svgWithStyle = require('raw-loader!./fixtures/style-inserted.svg');
         var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle, { classPrefix: 'test.prefix-' });
 
         // Are all 10 classes prefixed in <style>
@@ -53,7 +53,7 @@ describe('getExtractedSVG()', function(){
     });
 
     it('should apply prefixes to ids', function () {
-        var svgWithStyle = require('raw!./fixtures/with-ids.svg');
+        var svgWithStyle = require('raw-loader!./fixtures/with-ids.svg');
         var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle, { idPrefix: 'test.prefix-' });
 
 
@@ -65,7 +65,7 @@ describe('getExtractedSVG()', function(){
     });
 
     it('should be able to specify tags to be removed by `removingTags` option', function () {
-        var svgRemovingTags = require('raw!./fixtures/removing-tags.svg');
+        var svgRemovingTags = require('raw-loader!./fixtures/removing-tags.svg');
         var tobeRemoved = require('./fixtures/removing-tags-to-be-removed.json');
         var tobeRemain = require('./fixtures/removing-tags-to-be-remain.json');
 
@@ -108,7 +108,7 @@ describe('getExtractedSVG()', function(){
     });
 
     it('should be able to specify attributes to be removed by `removingTagAttrs` option', function () {
-        var svgRemoveTagAttrs = require('raw!./fixtures/style-inserted.svg');
+        var svgRemoveTagAttrs = require('raw-loader!./fixtures/style-inserted.svg');
         var tobeRemoved = require('./fixtures/removing-attrs-to-be-removed.json');
 
         var processedSVG = SVGInlineLoader.getExtractedSVG(svgRemoveTagAttrs, { removingTagAttrs: tobeRemoved });
@@ -123,7 +123,7 @@ describe('getExtractedSVG()', function(){
         });
     });
     it('should be able to warn about tagsAttrs to be removed listed in `warnTagAttrs` option via console.log', function () {
-        var svg = require('raw!./fixtures/with-ids.svg');
+        var svg = require('raw-loader!./fixtures/with-ids.svg');
         var tobeWarned = ['id'];
         var oldConsoleWarn = console.warn;
         var warnings=[];
@@ -137,7 +137,7 @@ describe('getExtractedSVG()', function(){
     });
 
     it('should be able to specify tags to be warned about by `warnTags` option', function () {
-        var svg = require('raw!./fixtures/removing-tags.svg');
+        var svg = require('raw-loader!./fixtures/removing-tags.svg');
         var tobeWarnedAbout = ['title', 'desc', 'defs', 'style', 'image'];
         var oldConsoleWarn = console.warn;
         var warnings=[];

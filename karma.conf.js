@@ -1,20 +1,20 @@
 var webpackConf = {
-    cache: true,
-    debug: true,
+    // cache: true,
+    // debug: true,
     devtool: 'inline-source-map',
     module: {
-        loaders: [
-            {
-                test: /\.json$/,
-                loaders: ['json']
-            }
-        ]
+        // rules: [
+        //     {
+        //         test: /\.json$/,
+        //         loaders: ['json']
+        //     }
+        // ]
     },
     entry: [
         './index.js'
     ],
     resolve: {
-        extensions: ["", ".js", ".jsx"],
+        extensions: [".js", ".jsx"],
     }
 };
 
@@ -33,7 +33,7 @@ module.exports = function(config) {
         port: 9876,
         colors: true,
         logLevel: config.LOG_DEBUG,
-        browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         browserNoActivityTimeout: 100000,
         plugins: [
             'karma-spec-reporter',
